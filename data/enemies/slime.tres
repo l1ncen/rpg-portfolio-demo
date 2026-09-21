@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/enemies/enemy_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "slime"
+display_name = "史莱姆"
+desc = "新手怪，低血低攻"
+level_min = 1
+level_max = 3
+base_hp = 40.0
+hp_per_level = 12.0
+base_atk = 6.0
+atk_per_level = 2.0
+def = 5.0
+exp_coeff = 0.9
+gold = 3

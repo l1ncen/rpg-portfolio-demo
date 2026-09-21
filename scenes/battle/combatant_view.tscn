@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/shared/portrait_placeholder.tscn" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/shared/stat_bar.tscn" id="2"]
+[ext_resource type="Script" path="res://scenes/battle/combatant_view.gd" id="3"]
+
+[node name="CombatantView" type="VBoxContainer"]
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 240.0
+script = ExtResource("3")
+
+[node name="Portrait" parent="." instance=ExtResource("1")]
+custom_minimum_size = Vector2(140, 140)
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 18
+text = "名字"
+horizontal_alignment = 1
+
+[node name="HpBar" parent="." instance=ExtResource("2")]
+layout_mode = 2
+bar_color = Color(0.88, 0.24, 0.24, 1)
+
+[node name="MpBar" parent="." instance=ExtResource("2")]
+layout_mode = 2
+bar_color = Color(0.3, 0.55, 0.95, 1)

@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/battle/action_bar.gd" id="1"]
+
+[node name="ActionBar" type="VBoxContainer"]
+anchors_preset = 0
+offset_right = 460.0
+offset_bottom = 108.0
+script = ExtResource("1")
+
+[node name="ActionRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="AttackBtn" type="Button" parent="ActionRow"]
+custom_minimum_size = Vector2(120, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "普攻"
+
+[node name="SkillBtn" type="Button" parent="ActionRow"]
+custom_minimum_size = Vector2(120, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "技能"
+
+[node name="HpPotionBtn" type="Button" parent="ActionRow"]
+custom_minimum_size = Vector2(120, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "血药"
+
+[node name="MpPotionBtn" type="Button" parent="ActionRow"]
+custom_minimum_size = Vector2(120, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "蓝药"
+
+[node name="MenuRow" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="StatsBtn" type="Button" parent="MenuRow"]
+custom_minimum_size = Vector2(120, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "角色"
+
+[node name="EquipBtn" type="Button" parent="MenuRow"]
+custom_minimum_size = Vector2(120, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "装备"
+
+[node name="AllocBtn" type="Button" parent="MenuRow"]
+custom_minimum_size = Vector2(120, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "加点"

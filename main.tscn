@@ -1,0 +1,96 @@
+[gd_scene load_steps=16 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1"]
+[ext_resource type="PackedScene" path="res://scenes/hud/top_status_bar.tscn" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/battle/combatant_view.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/battle/battle_log.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/battle/action_bar.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/panels/class_select_panel.tscn" id="6"]
+[ext_resource type="PackedScene" path="res://scenes/panels/stats_panel.tscn" id="7"]
+[ext_resource type="PackedScene" path="res://scenes/panels/equipment_panel.tscn" id="8"]
+[ext_resource type="PackedScene" path="res://scenes/panels/stat_alloc_panel.tscn" id="9"]
+[ext_resource type="PackedScene" path="res://scenes/panels/level_up_popup.tscn" id="10"]
+[ext_resource type="Resource" path="res://data/enemies/slime.tres" id="11"]
+[ext_resource type="Resource" path="res://data/enemies/goblin.tres" id="12"]
+[ext_resource type="Resource" path="res://data/enemies/ghost.tres" id="13"]
+[ext_resource type="Resource" path="res://data/enemies/skeleton.tres" id="14"]
+[ext_resource type="Resource" path="res://data/enemies/dragon.tres" id="15"]
+
+[node name="Main" type="Control"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+enemy_configs = Array[EnemyConfig]([ExtResource("11"), ExtResource("12"), ExtResource("13"), ExtResource("14"), ExtResource("15")])
+
+[node name="BattleRoot" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="Column" type="VBoxContainer" parent="BattleRoot"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TopBar" parent="BattleRoot/Column" instance=ExtResource("2")]
+layout_mode = 2
+
+[node name="EnemyView" parent="BattleRoot/Column" instance=ExtResource("3")]
+layout_mode = 2
+size_flags_horizontal = 4
+show_mp = false
+placeholder_color = Color(0.45, 0.3, 0.32, 1)
+
+[node name="Log" parent="BattleRoot/Column" instance=ExtResource("4")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerView" parent="BattleRoot/Column" instance=ExtResource("3")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Actions" parent="BattleRoot/Column" instance=ExtResource("5")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="FloatLayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="ClassSelect" parent="." instance=ExtResource("6")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Stats" parent="." instance=ExtResource("7")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Equip" parent="." instance=ExtResource("8")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Alloc" parent="." instance=ExtResource("9")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="LevelUp" parent="." instance=ExtResource("10")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0

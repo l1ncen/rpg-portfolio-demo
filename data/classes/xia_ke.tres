@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ClassConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/classes/class_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "xia_ke"
+display_name = "侠客"
+role_desc = "物理爆发，近战输出"
+base_hp = 120.0
+base_mp = 40.0
+base_atk = 14.0
+base_def = 5.0
+base_crit_rate = 0.1
+base_crit_dmg = 1.2
+con_growth = 12.0
+int_growth = 4.0
+str_growth = 3.5
+damage_type = "物理"
+skill_name = "决心一击"
+skill_desc = "250% 攻击力的即时爆发"
+skill_multiplier = 2.5
+skill_mp = 15
+skill_type = "即时"

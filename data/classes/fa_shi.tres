@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ClassConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/classes/class_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "fa_shi"
+display_name = "法师"
+role_desc = "法术爆发，远程输出"
+base_hp = 80.0
+base_mp = 80.0
+base_atk = 12.0
+base_def = 3.0
+base_crit_rate = 0.1
+base_crit_dmg = 1.2
+con_growth = 6.0
+int_growth = 12.0
+str_growth = 3.0
+damage_type = "法术"
+skill_name = "雷击"
+skill_desc = "300% 攻击力的法术爆发"
+skill_multiplier = 3.0
+skill_mp = 25
+skill_type = "即时"

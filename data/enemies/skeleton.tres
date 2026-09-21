@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/enemies/enemy_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "skeleton"
+display_name = "骷髅战士"
+desc = "坦克怪，高血高防"
+level_min = 13
+level_max = 16
+base_hp = 300.0
+hp_per_level = 30.0
+base_atk = 26.0
+atk_per_level = 4.0
+def = 30.0
+exp_coeff = 1.4
+gold = 15

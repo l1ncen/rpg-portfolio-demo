@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="ClassConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/classes/class_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "shu_shi"
+display_name = "术士"
+role_desc = "DoT 持续伤害输出"
+base_hp = 100.0
+base_mp = 60.0
+base_atk = 9.0
+base_def = 4.0
+base_crit_rate = 0.1
+base_crit_dmg = 1.2
+con_growth = 8.0
+int_growth = 10.0
+str_growth = 2.8
+damage_type = "法术"
+skill_name = "毒雾"
+skill_desc = "总计 200% 攻击力，分 3 回合结算"
+skill_multiplier = 2.0
+skill_mp = 20
+skill_type = "DoT"
+skill_dot_turns = 3

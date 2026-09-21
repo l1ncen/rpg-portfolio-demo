@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="EnemyConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/enemies/enemy_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "dragon"
+display_name = "巨龙"
+desc = "Boss，全方位高数值"
+level_min = 20
+level_max = 20
+base_hp = 800.0
+hp_per_level = 0.0
+base_atk = 55.0
+atk_per_level = 0.0
+def = 60.0
+exp_coeff = 2.0
+gold = 200
+is_boss = true

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="ClassConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/classes/class_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "qi_shi"
+display_name = "骑士"
+role_desc = "坦克近战，生存优先"
+base_hp = 160.0
+base_mp = 30.0
+base_atk = 10.0
+base_def = 12.0
+base_crit_rate = 0.1
+base_crit_dmg = 1.2
+con_growth = 18.0
+int_growth = 3.0
+str_growth = 2.5
+damage_type = "物理"
+skill_name = "信念猛击"
+skill_desc = "180% 攻击力，并获得 20% 减伤 2 回合"
+skill_multiplier = 1.8
+skill_mp = 10
+skill_type = "即时"
+skill_effect = "减伤"
+skill_effect_value = 0.2
+skill_effect_turns = 2

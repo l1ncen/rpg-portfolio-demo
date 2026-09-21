@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="EnemyConfig" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/enemies/enemy_config.gd" id="1"]
+
+[resource]
+script = ExtResource("1")
+id = "ghost"
+display_name = "幽灵"
+desc = "法系怪，高攻低防"
+level_min = 8
+level_max = 12
+base_hp = 130.0
+hp_per_level = 20.0
+base_atk = 28.0
+atk_per_level = 4.0
+def = 8.0
+exp_coeff = 1.2
+gold = 10

@@ -1,0 +1,10 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# godot_ai 插件（他人资产，不入库；clone 后游戏本体不依赖它）
+addons/godot_ai/
+addons/.godot_ai_update/
+
+# 部署密钥（本地推送用，不入库）
+.deploy/
