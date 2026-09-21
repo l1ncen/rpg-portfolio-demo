@@ -30,6 +30,9 @@ var defeated_count := 0
 @onready var equip_panel: EquipmentPanel = $Equip
 @onready var alloc_panel: StatAllocPanel = $Alloc
 @onready var level_up_popup: LevelUpPopup = $LevelUp
+@onready var world_map: WorldMap = $WorldMap
+@onready var dialog_box: DialogBox = $DialogBox
+@onready var combat_sim: CombatSimPanel = $CombatSim
 
 func _ready() -> void:
 	_connect()
@@ -50,6 +53,10 @@ func _connect() -> void:
 	equip_panel.equip_requested.connect(_on_equip_item)
 	equip_panel.unequip_requested.connect(_on_unequip_slot)
 	equip_panel.sell_requested.connect(_on_sell_item)
+	world_map.battle_requested.connect(_start_battle)
+	world_map.sim_requested.connect(_open_sim_dialog)
+	dialog_box.choice_made.connect(_on_dialog_choice)
+	combat_sim.closed.connect(func(): world_map.set_active(true))
 
 # ===== 开局 =====
 func _on_class_picked(cfg: ClassConfig) -> void:
@@ -57,8 +64,41 @@ func _on_class_picked(cfg: ClassConfig) -> void:
 	player_view.setup("%s Lv.%d" % [cfg.display_name, player.level], player_placeholder_text, player_art)
 	action_bar.set_skill("%s(%dMP)" % [cfg.skill_name, cfg.skill_mp])
 	battle_log.push_line("选择了职业：%s（%s）" % [cfg.display_name, cfg.role_desc], battle_log.player_color)
+	world_map.setup(cfg.display_name, player_art, enemy_art)
 	_refresh()
+	_enter_map()
+
+# ===== 地图 =====
+func _enter_map() -> void:
+	enemy_view.visible = false
+	battle_log.visible = false
+	player_view.visible = false
+	action_bar.visible = false
+	world_map.visible = true
+	world_map.set_active(true)
+	busy = false
+	action_bar.set_locked(false)
+	_refresh()
+
+func _start_battle() -> void:
+	world_map.visible = false
+	enemy_view.visible = true
+	battle_log.visible = true
+	player_view.visible = true
+	action_bar.visible = true
 	_next_enemy()
+
+func _open_sim_dialog() -> void:
+	dialog_box.show_dialog("练功师父",
+		"想看看自己的输出？我这有各种木桩，数值随你调——选个怪，改改数值，打一轮就知道伤害成色了。",
+		["开始打桩模拟", "先不了，谢谢"])
+
+func _on_dialog_choice(index: int) -> void:
+	if index == 0:
+		combat_sim.setup(player, enemy_configs)
+		combat_sim.open()
+	else:
+		world_map.set_active(true)
 
 # ===== 敌人生成 =====
 func _next_enemy() -> void:
@@ -167,9 +207,7 @@ func _on_enemy_defeated() -> void:
 	if not levels.is_empty():
 		level_up_popup.show_levels(levels)
 	await get_tree().create_timer(next_enemy_delay).timeout
-	_next_enemy()
-	busy = false
-	action_bar.set_locked(false)
+	_enter_map()
 
 func _on_player_defeated() -> void:
 	battle_log.push_line("你倒下了……", battle_log.enemy_color)
@@ -178,8 +216,8 @@ func _on_player_defeated() -> void:
 		player.cur_mp = player.max_mp()
 		battle_log.push_line("原地满状态复活（Demo 无死亡惩罚）")
 	_refresh()
-	busy = false
-	action_bar.set_locked(false)
+	await get_tree().create_timer(next_enemy_delay).timeout
+	_enter_map()
 
 # ===== 面板操作 =====
 func _on_allocate(stat_index: int) -> void:

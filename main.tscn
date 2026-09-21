@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3]
+[gd_scene load_steps=19 format=3]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1"]
 [ext_resource type="PackedScene" path="res://scenes/hud/top_status_bar.tscn" id="2"]
@@ -15,6 +15,9 @@
 [ext_resource type="Resource" path="res://data/enemies/ghost.tres" id="13"]
 [ext_resource type="Resource" path="res://data/enemies/skeleton.tres" id="14"]
 [ext_resource type="Resource" path="res://data/enemies/dragon.tres" id="15"]
+[ext_resource type="PackedScene" path="res://scenes/map/world_map.tscn" id="16"]
+[ext_resource type="PackedScene" path="res://scenes/dialog/dialog_box.tscn" id="17"]
+[ext_resource type="PackedScene" path="res://scenes/panels/combat_sim_panel.tscn" id="18"]
 
 [node name="Main" type="Control"]
 anchors_preset = 15
@@ -58,6 +61,14 @@ size_flags_horizontal = 4
 layout_mode = 2
 size_flags_horizontal = 4
 
+[node name="WorldMap" parent="." instance=ExtResource("16")]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
 [node name="FloatLayer" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -90,6 +101,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="LevelUp" parent="." instance=ExtResource("10")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="DialogBox" parent="." instance=ExtResource("17")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CombatSim" parent="." instance=ExtResource("18")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
